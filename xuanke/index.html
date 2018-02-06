@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv=X-UA-Compatible content="IE=edge">
+        <meta http-equiv=content-type content="text/html; charset=utf-8">
+        <meta name=viewport content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+        <meta name=msapplication-tap-highlight content=no>
+        <title>三维查看器</title>
+        <link rel="shortcut icon" href=/assets/img/favicon/favicon.ico>
+        <link rel=icon sizes="16x16 32x32 64x64" href=./assets/img/favicon/favicon.ico>
+        <link rel=icon type=image/png sizes=196x196 href=./assets/img/favicon/favicon-196.png>
+        <link rel=icon type=image/png sizes=160x160 href=./assets/img/favicon/favicon-160.png>
+        <link rel=icon type=image/png sizes=96x96 href=./assets/img/favicon/favicon-96.png>
+        <link rel=icon type=image/png sizes=64x64 href=./assets/img/favicon/favicon-64.png>
+        <link rel=icon type=image/png sizes=32x32 href=./assets/img/favicon/favicon-32.png>
+        <link rel=icon type=image/png sizes=16x16 href=./assets/img/favicon/favicon-16.png>
+        <link rel=apple-touch-icon sizes=152x152 href=./assets/img/favicon/favicon-152.png>
+        <link rel=apple-touch-icon sizes=144x144 href=./assets/img/favicon/favicon-144.png>
+        <link rel=apple-touch-icon sizes=120x120 href=./assets/img/favicon/favicon-120.png>
+        <link rel=apple-touch-icon sizes=114x114 href=./assets/img/favicon/favicon-114.png>
+        <link rel=apple-touch-icon sizes=76x76 href=./assets/img/favicon/favicon-76.png>
+        <link rel=apple-touch-icon sizes=72x72 href=./assets/img/favicon/favicon-72.png>
+        <link rel=apple-touch-icon href=./assets/img/favicon/favicon-57.png>
+        <meta name=msapplication-TileColor content=#FFFFFF>
+        <meta name=msapplication-TileImage content=./assets/img/favicon/favicon-144.png>
+        <meta name=msapplication-config content=./assets/img/favicon/browserconfig.xml>
+        <link rel=stylesheet href="./assets/css/walnut.css?t=1476061047345">
+        <script type=text/javascript>
+            var _hmt = _hmt || [];
+            (function() {
+                var hm = document.createElement("script");
+                hm.src = "//hm.baidu.com/hm.js?c06d3f3d3798850526b96f2c836bcb76";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+            }
+            )();
+        </script>
+    </head>
+    <body onselect="return false;">
+        <div class=weixin-preview>
+            <img id=weixin-preview-img>
+        </div>
+        <div class=cover>
+            <div class=center>
+                <div class=loading>
+                    <div class=spinner>
+                        <div class=rect1></div>
+                        <div class=rect2></div>
+                        <div class=rect3></div>
+                        <div class=rect4></div>
+                        <div class=rect5></div>
+                    </div>
+                </div>
+                <div class=error>
+                    <p class=message></p>
+                    <a href="/" target=_blank>访&nbsp;问&nbsp;首&nbsp;页</a>
+                </div>
+            </div>
+        </div>
+        <div class=mask></div>
+        <div class=canvas>
+            <div class=layer-images></div>
+        </div>
+        <div class=titlebar>
+            <a id=btn-popup href=javascript:; target=_blank title=在新窗口打开 class=icon-popup></a>
+        </div>
+        <div class=toolbar>
+            <a id=btn-rotate href=javascript:; title=旋转 class="active icon-rotate"></a>
+            <a id=btn-move href=javascript:; title=平移 class=icon-move></a>
+            <a id=btn-zoom-in href=javascript:; title=放大 class="icon-zoom-in hidden-touch"></a>
+            <a id=btn-zoom-out href=javascript:; title=缩小 class="icon-zoom-out hidden-touch"></a>
+
+            <a id=btn-info href=javascript:; title=信息 class="icon-info hidden"></a>
+        </div>
+        <div class=switch></div>
+        <div id=modal-hotspot class=modal>
+            <div class=content>
+                <div class=head>
+                    <h1>热点信息</h1>
+                    <a href=javascript:; class=close>&times;</a>
+                </div>
+                <div class=body>
+                    <p></p>
+                </div>
+                <div class=foot>
+                    <a href=javascript:; class=close>关 闭 窗 口</a>
+                </div>
+            </div>
+        </div>
+        <div id=modal-info class=modal>
+            <div class=content>
+                <div class=head>
+                    <h1>特征信息</h1>
+                    <a href=javascript:; class=close>&times;</a>
+                </div>
+                <div class=body>
+                    <p></p>
+                </div>
+                <div class=foot>
+                    <a href=javascript:; class=close>关 闭 窗 口</a>
+                </div>
+            </div>
+        </div>
+        
+        <script type=text/javascript src="./assets/js/final.js?t=1476061047345"></script>
+
+        <script>/*
+String.prototype.replaceAll  = function(s1,s2){     
+    return this.replace(new RegExp(s1,"gm"),s2);     
+}   
+            $.ajax({
+                url: "assets/js/walnut.js",
+            }).done(function ( data ) {
+               // if( console && console.log ) {
+                    for(var i = 0; i < aaaaaaaaa.length;i++) {
+                        data = data.replaceAll("\\[aaaaaaaaa\\["+i+"\\]\\]","."+aaaaaaaaa[i]);
+                        data = data.replaceAll("aaaaaaaaa\\["+i+"\\]",'"'+aaaaaaaaa[i]+'"');
+                    };
+               // }
+
+                document.body.innerHTML = escape(data);
+
+            })
+            });*/
+
+            </script>
+    </body>
+</html>
