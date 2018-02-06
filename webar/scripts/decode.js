@@ -14,7 +14,7 @@ fs.readFile('bundle.js', 'utf8', function (err, data) {
     var origin = beautify(data, { indent_size: 2 });
     fs.writeFileSync('bundle1.js', origin, function (err) {
         if (err) throw err;
-        console.log('It\'s saved!');
+        //console.log('It\'s saved!');
     });
 
     var globalData = origin.substr(0, origin.indexOf("(function(a, d) {"));
@@ -121,7 +121,7 @@ fs.readFile('lib/spar.js', 'utf8', function (err, data) {
     var origin = beautify(data, { indent_size: 2 });
     fs.writeFileSync('spar1.js', origin, function (err) {
         if (err) throw err;
-        console.log('It\'s saved!');
+        //console.log('It\'s saved!');
     });
 
     var globalData = origin.substr(0, origin.indexOf("(function(a, d) {"));
@@ -176,7 +176,7 @@ fs.readFile('lib/spar.js', 'utf8', function (err, data) {
         if (err) throw err;
     });
     _0x24fc = require('./spar-step3');
-    console.log(_0x24fc('0x0', '!$YZ'));
+    //console.log(_0x24fc('0x0', '!$YZ'));
 
 
     functionData = functionData.substr(functionData.indexOf("(function(d, a) {"));
@@ -200,7 +200,7 @@ fs.readFile('lib/spar.js', 'utf8', function (err, data) {
                 realCode = replaceAll(realCode,"\\n","\\n");
                 realCode = replaceAll(realCode,"'","\\'");
                 if(realCode.indexOf("m=") >= 0) {
-                    console.log(eval(result[0]));
+                    //console.log(eval(result[0]));
                 }
                 str = str.replace(result[0], "'" + realCode + "'");
                 if (result.index == 2) {
