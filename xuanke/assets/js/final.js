@@ -5787,11 +5787,11 @@ window.Modernizr = function(i, E, x) {
       return this
     }
   }(jQuery), $(function() {
-    var b = "([a-zA-Z0-9-._]+.xuantech.cn)|([a-zA-Z0-9-._]+.xuanke3d.com$)$",
+    var b = "([a-zA-Z0-9-._]+.dammytech.cn)|([a-zA-Z0-9-._]+.dammyke3d.com$)$",
       h = window.location.hostname,
       d = new RegExp(b, "g"),
       c = new App;
-    if (window.XK3D.api = new Api(c), !d.test(h)) {
+    if (window.DM3D.api = new Api(c), !d.test(h)) {
       c.startup()
     } else {
       var e = $("div.cover"),
@@ -5831,14 +5831,14 @@ window.Modernizr = function(i, E, x) {
               new c(b)
             }), $.each(window.appPlugins, function(a, c) {
               new c(b)
-            }), window.XK3D.onStartup && window.XK3D.onStartup.fire.call(window.XK3D.onStartup, window.XK3D.api), "hide" === b.config.popup) {
+            }), window.DM3D.onStartup && window.DM3D.onStartup.fire.call(window.DM3D.onStartup, window.DM3D.api), "hide" === b.config.popup) {
             var a = b.get("frame");
             a.hidePopupButton()
           };
           b.model.load()
         }
         var b = this;
-        this.frame.isInFrame() && this.frame.isIE(8) || b.controller(XK3D.PreloadController), a(), b.emit("startup")
+        this.frame.isInFrame() && this.frame.isIE(8) || b.controller(DM3D.PreloadController), a(), b.emit("startup")
       },
       component: function(a, b) {
         if (void(0) !== this.components[a]) {
@@ -5859,7 +5859,7 @@ window.Modernizr = function(i, E, x) {
   }(),
   function() {
     "use strict";
-    window.XK3D = window.XK3D || {};
+    window.DM3D = window.DM3D || {};
     var a = null;
     window.Api = klass(function(b) {
       a = b

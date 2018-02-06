@@ -67,6 +67,8 @@ fs.readFile('origin.js', 'utf8', function (err, data) {
     };
     //屏蔽host校验
     functionData = replaceAll(functionData, "d.test\\(h\\)", "!d.test(h)");
+    functionData = replaceAll(functionData, "xuan", "dammy");
+    functionData = replaceAll(functionData, "XK3D", "DM3D");
     fs.writeFile('assets/js/final.js', beautify(functionData, { indent_size: 2 }), function (err) {
         if (err) throw err;
         console.log('It\'s saved!');
