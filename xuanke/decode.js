@@ -6,11 +6,18 @@ function replaceAll(source, s1, s2) {
     return source.replace(new RegExp(s1, "gm"), s2);
 }
 
+function contains(source, arr) {
+    for (const iterator of arr) {
+        if (source.indexOf(iterator) >= 0)
+            return true;
+    }
+    return false;
+}
+
 fs.readFile('origin.js', 'utf8', function (err, data) {
     if (err) {
         throw err;
     }
-
     //先执行让它自动解密
     data = data.replace("eval", "var origin=");
     vm.runInThisContext(data, {
@@ -36,21 +43,30 @@ fs.readFile('origin.js', 'utf8', function (err, data) {
     //开始替换代码文件
     for (var i = 0; i < _$_455d.length; i++) {
         var realData = _$_455d[i];//replaceAll(_$_455d[i],"\\\\","\\");
-         realData = replaceAll(realData,"\\\\\\\\","\\\\\\\\");
-         realData = replaceAll(realData,"\\\\w","\\\\w");
-         realData = replaceAll(realData,"\\\\d","\\\\d");
-         realData = replaceAll(realData,"\\r\\n","\\\\r\\\\n");
-         
-         
-        if(  _$_455d[i].indexOf('wheel') >= 0 || _$_455d[i].indexOf('jquery') >= 0 || _$_455d[i] == "" || _$_455d[i].indexOf(',') >= 0 ||_$_455d[i].indexOf(':') >= 0 || _$_455d[i].indexOf('.') >= 0 || _$_455d[i].indexOf('*') >= 0 || _$_455d[i].indexOf(' ') >= 0 || _$_455d[i].indexOf('-') >= 0 || _$_455d[i].indexOf('#') >= 0 || _$_455d[i].indexOf('>') >= 0 || _$_455d[i].indexOf('<') >= 0 ) {
-            
-        } else {
+        realData = replaceAll(realData, "\\\\\\\\", "\\\\\\\\");
+        realData = replaceAll(realData, "\\\\w", "\\\\w");
+        realData = replaceAll(realData, "\\\\d", "\\\\d");
+        realData = replaceAll(realData, "\\r\\n", "\\\\r\\\\n");
+
+        var arr = ["wheel",
+            "jquery",
+            ",",
+            ":",
+            ".",
+            "*",
+            " ",
+            "-",
+            "#",
+            ">",
+            "<",
+            "&",];
+        if (_$_455d[i] == "" || contains(_$_455d[i], arr)) {} else {
             functionData = replaceAll(functionData, "\\[_\\$_455d\\[" + i + "\\]\\]", "." + realData);
         }
         functionData = replaceAll(functionData, "_\\$_455d\\[" + i + "\\]", '"' + replaceAll(realData, '"', '\\"') + '"');
     };
     //屏蔽host校验
-    functionData = replaceAll(functionData,"d.test\\(h\\)","!d.test(h)");
+    functionData = replaceAll(functionData, "d.test\\(h\\)", "!d.test(h)");
     fs.writeFile('final.js', beautify(functionData, { indent_size: 2 }), function (err) {
         if (err) throw err;
         console.log('It\'s saved!');
