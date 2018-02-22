@@ -6,13 +6,18 @@ function replaceAll(source, s1, s2) {
     return source.replace(new RegExp(s1, "gm"), s2);
 }
 
+var tmpDir = "jstemp\\";
+if (!fs.existsSync(tmpDir)){
+    fs.mkdirSync(tmpDir,0777);
+}
+
 fs.readFile('bundle.js', 'utf8', function (err, data) {
     if (err) {
         throw err;
     }
 
     var origin = beautify(data, { indent_size: 2 });
-    fs.writeFileSync('bundle1.js', origin, function (err) {
+    fs.writeFileSync(tmpDir+'bundle1.js', origin, function (err) {
         if (err) throw err;
         //console.log('It\'s saved!');
     });
@@ -23,14 +28,14 @@ fs.readFile('bundle.js', 'utf8', function (err, data) {
         console: console,
     });
     var finalSource = "var _0xc466 = " + JSON.stringify(_0xc466/*, null, '\n'*/) + ";\n" + functionData;
-    fs.writeFileSync('bundle2.js', beautify(finalSource, { indent_size: 2 }), function (err) {
+    fs.writeFileSync(tmpDir+'bundle2.js', beautify(finalSource, { indent_size: 2 }), function (err) {
         if (err) throw err;
         //console.log('It\'s saved!');
     });
     //console.log(_0xc466.length);
 
 
-    fs.writeFileSync('step1.js', beautify("var _0xc466 = " + JSON.stringify(_0xc466, null, '\n') + ";\n", { indent_size: 2 }), function (err) {
+    fs.writeFileSync(tmpDir+'step1.js', beautify("var _0xc466 = " + JSON.stringify(_0xc466, null, '\n') + ";\n", { indent_size: 2 }), function (err) {
         if (err) throw err;
         //console.log('It\'s saved!');
     });
@@ -48,7 +53,7 @@ fs.readFile('bundle.js', 'utf8', function (err, data) {
     }
     */
     step2 = step2.replace("b['test'](a['removeCookie']['toString']())", "true");
-    fs.writeFileSync('step2.js', beautify(step2, { indent_size: 2 }), function (err) {
+    fs.writeFileSync(tmpDir+'step2.js', beautify(step2, { indent_size: 2 }), function (err) {
         if (err) throw err;
         //console.log('It\'s saved!');
     });
@@ -66,7 +71,7 @@ fs.readFile('bundle.js', 'utf8', function (err, data) {
     */
     step3 = step3.replace("this['runState'](a['test'](this['newState']['toString']()) ? --this['states'][0x1] : --this['states'][0x0]);", "true;");
     step3 = step3.replace("var _0x6c46", "module.exports");
-    fs.writeFileSync('step3.js', beautify(step3, { indent_size: 2 }), function (err) {
+    fs.writeFileSync(tmpDir+'step3.js', beautify(step3, { indent_size: 2 }), function (err) {
         if (err) throw err;
     });
     _0x6c46 = require('./step3');
@@ -74,7 +79,7 @@ fs.readFile('bundle.js', 'utf8', function (err, data) {
 
 
     functionData = functionData.substr(functionData.indexOf("(function(c) {"));
-    /*fs.writeFileSync('step4.js', beautify(functionData, { indent_size: 2 }), function (err) {
+    /*fs.writeFileSync(tmpDir+'step4.js', beautify(functionData, { indent_size: 2 }), function (err) {
         if (err) throw err;
         //console.log('It\'s saved!');
     });*/
@@ -119,7 +124,7 @@ fs.readFile('lib/spar.js', 'utf8', function (err, data) {
     }
 
     var origin = beautify(data, { indent_size: 2 });
-    fs.writeFileSync('spar1.js', origin, function (err) {
+    fs.writeFileSync(tmpDir+'spar1.js', origin, function (err) {
         if (err) throw err;
         //console.log('It\'s saved!');
     });
@@ -130,13 +135,13 @@ fs.readFile('lib/spar.js', 'utf8', function (err, data) {
         console: console,
     });
     var finalSource = "var _0x4fc2 = " + JSON.stringify(_0x4fc2/*, null, '\n'*/) + ";\n" + functionData;
-    fs.writeFileSync('spar2.js', beautify(finalSource, { indent_size: 2 }), function (err) {
+    fs.writeFileSync(tmpDir+'spar2.js', beautify(finalSource, { indent_size: 2 }), function (err) {
         if (err) throw err;
         //console.log('It\'s saved!');
     });
 
 
-    fs.writeFileSync('spar-step1.js', beautify("var _0x4fc2 = " + JSON.stringify(_0x4fc2, null, '\n') + ";\n", { indent_size: 2 }), function (err) {
+    fs.writeFileSync(tmpDir+'spar-step1.js', beautify("var _0x4fc2 = " + JSON.stringify(_0x4fc2, null, '\n') + ";\n", { indent_size: 2 }), function (err) {
         if (err) throw err;
         //console.log('It\'s saved!');
     });
@@ -154,7 +159,7 @@ fs.readFile('lib/spar.js', 'utf8', function (err, data) {
     }
     */
     step2 = step2.replace("b['test'](a['removeCookie']['toString']())", "true");
-    fs.writeFileSync('spar-step2.js', beautify(step2, { indent_size: 2 }), function (err) {
+    fs.writeFileSync(tmpDir+'spar-step2.js', beautify(step2, { indent_size: 2 }), function (err) {
         if (err) throw err;
         //console.log('It\'s saved!');
     });
@@ -172,7 +177,7 @@ fs.readFile('lib/spar.js', 'utf8', function (err, data) {
     */
     step3 = step3.replace("this['runState'](a['test'](this['newState']['toString']()) ? --this['states'][0x1] : --this['states'][0x0]);", "true;");
     step3 = step3.replace("var _0x24fc", "module.exports");
-    fs.writeFileSync('spar-step3.js', beautify(step3, { indent_size: 2 }), function (err) {
+    fs.writeFileSync(tmpDir+'spar-step3.js', beautify(step3, { indent_size: 2 }), function (err) {
         if (err) throw err;
     });
     _0x24fc = require('./spar-step3');
@@ -180,7 +185,7 @@ fs.readFile('lib/spar.js', 'utf8', function (err, data) {
 
 
     functionData = functionData.substr(functionData.indexOf("(function(d, a) {"));
-    fs.writeFileSync('spar-step4.js', beautify(functionData, { indent_size: 2 }), function (err) {
+    fs.writeFileSync(tmpDir+'spar-step4.js', beautify(functionData, { indent_size: 2 }), function (err) {
         if (err) throw err;
         //console.log('It\'s saved!');
     });

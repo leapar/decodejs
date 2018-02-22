@@ -14,6 +14,12 @@ function contains(source, arr) {
     return false;
 }
 
+var tmpDir = "jstemp\\";
+if (!fs.existsSync(tmpDir)){
+    fs.mkdirSync(tmpDir,0777);
+}
+
+
 fs.readFile('origin.js', 'utf8', function (err, data) {
     if (err) {
         throw err;
@@ -23,7 +29,7 @@ fs.readFile('origin.js', 'utf8', function (err, data) {
     vm.runInThisContext(data, {
         console: console,
     });
-    fs.writeFile('origin-beautify.js', beautify(origin, { indent_size: 2 }), function (err) {
+    fs.writeFile(tmpDir+'origin-beautify.js', beautify(origin, { indent_size: 2 }), function (err) {
         if (err) throw err;
         //console.log('It\'s saved!');
     });
@@ -35,7 +41,7 @@ fs.readFile('origin.js', 'utf8', function (err, data) {
         console: console,
     });
     var finalSource = "var _$_455d = " + JSON.stringify(_$_455d, null, '\n') + functionData;
-    fs.writeFile('beautify.js', beautify(finalSource, { indent_size: 2 }), function (err) {
+    fs.writeFile(tmpDir+'beautify.js', beautify(finalSource, { indent_size: 2 }), function (err) {
         if (err) throw err;
         //console.log('It\'s saved!');
     });
