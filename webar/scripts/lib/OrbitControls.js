@@ -158,8 +158,8 @@ THREE.OrbitControls = function ( object, domElement ) {
             // restrict phi to be between desired limits
             spherical.phi = Math.max( scope.minPolarAngle, Math.min( scope.maxPolarAngle, spherical.phi ) );
 
-            spherical.phi = Math.PI*0.5;
-            console.log("这里限制了球体坐标系90 只在赤道旋转");
+           /* spherical.phi = Math.PI*0.5;
+            console.log("这里限制了球体坐标系90 只在赤道旋转");*/
             spherical.makeSafe();
 
 

@@ -24,7 +24,7 @@
     "bgcolor": "#000000",
     "name": "弹头瓶",
     "start": [
-        90,
+        0,
         0
     ],
     "modelAspect": 1,
